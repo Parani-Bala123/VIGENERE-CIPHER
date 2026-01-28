@@ -7,7 +7,7 @@
 
 ## AIM:
 
-To implement the Vigenere Cipher substitution technique using C program.
+To implement the Vigenere Cipher substitution technique using Python program.
 
 ## DESCRIPTION:
 
@@ -30,7 +30,26 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
-
+```
+def vigenere_cipher(text, key, decrypt=False):
+    result = []
+    key_len = len(key)
+    for i, char in enumerate(text):
+        shift = ord(key[i % key_len]) - ord('A')
+        if decrypt:
+            shift = 26 - shift
+        new_char = chr((ord(char) - ord('A') + shift) % 26 + ord('A'))
+        result.append(new_char)
+    return "".join(result)
+text = input("Enter text (UPPERCASE only): ")
+key = input("Enter key (UPPERCASE only): ")
+encrypted = vigenere_cipher(text, key, decrypt=False)
+print("Encrypted Message:", encrypted)
+decrypted = vigenere_cipher(encrypted, key, decrypt=True)
+print("Decrypted Message:", decrypted)
+```
 ## OUTPUT
+<img width="603" height="314" alt="image" src="https://github.com/user-attachments/assets/27f4cb06-781a-4208-8a5f-e9bc2916c7c8" />
 
 ## RESULT
+implementation of the Vigenere Cipher substitution technique using Python program is executed successful.
